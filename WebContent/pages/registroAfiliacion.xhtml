@@ -20,7 +20,6 @@
             <f:selectItem itemLabel="Cédula de Extranjería (CE)" itemValue="CE" />
             <f:selectItem itemLabel="Registro Civil (RC)" itemValue="RC" />
             <f:selectItem itemLabel="Tarjeta de Identidad (TI)" itemValue="TI" />
-		    <f:ajax listener="#{personaBean.onTipoDocumentoChange}" execute="@this" render="otherComponentsToUpdate" />
 		</h:selectOneMenu>
 		<h:message for="tipoDocumento" />
 

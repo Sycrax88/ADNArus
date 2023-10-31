@@ -1,19 +1,19 @@
 package saludypension.infraestructura.web;
 
-import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.validator.ValidatorException;
-import javax.inject.Named;
+import javax.inject.Inject;
 
 import saludypension.aplicacion.manejador.ManejadorPersona;
 import saludypension.dominio.modelo.Persona;
 
-@Named
-@SessionScoped
+@ManagedBean
+@SessionScoped 
 public class PersonaBean {
 	
 	private static final String SOLO_SE_PERMITEN_LETRAS = "Solo se permiten letras";
@@ -24,7 +24,8 @@ public class PersonaBean {
 	private static final String TIPO_DOCUMENTO_INVALIDO = "Tipo de documento no válido";
 
 
-//	private ManejadorPersona manejadorPersona;
+	@Inject
+	private ManejadorPersona manejadorPersona;
 	
 	private Persona persona;
 	
@@ -54,15 +55,16 @@ public class PersonaBean {
 	public void tipoDocumentoSeleccionadoListener(AjaxBehaviorEvent evento) {
 
 	}
+	
     public void registrarPersona() {
-//    	System.out.println(this.persona);
-//    	this.resultado = "";
-//        try {
-//        	manejadorPersona.registrarPersona(this.persona);
-//            agregarMensajeInformativo(REGISTRO_EXITOSO);
-//        } catch (Exception e) {
-//            mostrarMensajeError(e.getMessage());
-//        }
+    	System.out.println(this.persona);
+    	this.resultado = "";
+        try {
+        	manejadorPersona.registrarPersona(this.persona);
+            agregarMensajeInformativo(REGISTRO_EXITOSO);
+        } catch (Exception e) {
+            mostrarMensajeError(e.getMessage());
+        }
     }
 
     public void validarNombre(String nombre) throws ValidatorException {
